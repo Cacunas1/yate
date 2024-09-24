@@ -1,0 +1,70 @@
+/home/cacunas/repos/propios/yate/main.mojo:62:11: error: no matching function in call to 'len'
+    if len(argv) < 2:
+       ~~~^~~~~~
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: could not deduce parameter 'T' of callee 'len'
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: could not deduce parameter 'T' of callee 'len'
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:13:23: error: cannot call function that may raise in a context that cannot raise
+        self.load_file()
+        ~~~~~~~~~~~~~~^~
+/home/cacunas/repos/propios/yate/main.mojo:13:23: note: try surrounding the call in a 'try' block
+        self.load_file()
+                      ^
+/home/cacunas/repos/propios/yate/main.mojo:9:8: note: or mark surrounding function as 'raises'
+    fn __init__(inout self, filename: String):
+       ^
+/home/cacunas/repos/propios/yate/main.mojo:23:24: error: no matching function in initialization
+            raise Error("File", self.filename, "can't be found")
+                  ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: expected at most 1 positional argument, got 4
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: expected at most 2 positional arguments, got 4
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: expected at most 2 positional arguments, got 4
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: expected at most 2 positional arguments, got 4
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: missing 1 required keyword-only argument: 'other'
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: candidate not viable: missing 1 required keyword-only argument: 'other'
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:1:1: note: generated function with type 'fn(inout self: Error, /, *, other: Error) -> None'
+from sys import argv
+^
+/home/cacunas/repos/propios/yate/main.mojo:27:9: error: use of unknown declaration 'let'
+        let file = File(self.filename, "w")
+        ^~~
+/home/cacunas/repos/propios/yate/main.mojo:27:13: error: statements must start at the beginning of a line
+        let file = File(self.filename, "w")
+            ^
+/home/cacunas/repos/propios/yate/main.mojo:33:17: error: expression must be mutable in assignment
+            self.mode = "insert"
+            ~~~~^~~~~
+/home/cacunas/repos/propios/yate/main.mojo:40:20: error: cannot implicitly convert 'Bool' value to 'None' in return value
+            return False
+                   ^~~~~
+/home/cacunas/repos/propios/yate/main.mojo:41:16: error: cannot implicitly convert 'Bool' value to 'None' in return value
+        return True
+               ^~~~
+/home/cacunas/repos/propios/yate/main.mojo:45:17: error: expression must be mutable in assignment
+            self.mode = "normal"
+            ~~~~^~~~~
+/home/cacunas/repos/propios/yate/main.mojo:48:17: error: expression must be mutable for in-place operator destination
+            self.content += input
+            ~~~~^~~~~~~~
+/home/cacunas/repos/propios/yate/main.mojo:55:17: error: use of unknown declaration 'let'
+                let command = input("Enter command: ")
+                ^~~
+/home/cacunas/repos/propios/yate/main.mojo:55:21: error: statements must start at the beginning of a line
+                let command = input("Enter command: ")
+                    ^
+mojo: error: failed to parse the provided Mojo source module

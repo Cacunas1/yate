@@ -1,0 +1,15 @@
+[project]
+authors = ["Cristian Acuña <c.acuna.sepulveda@gmail.com>"]
+channels = ["conda-forge", "https://conda.modular.com/max"]
+description = "Add a short description here"
+name = "yate"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+max = ">=24.5.0,<25"
+python = "==3.12"
+jupyterlab = ">=4.2.5,<5"
+jupytext = ">=1.16.4,<2"
