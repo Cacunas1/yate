@@ -1,8 +1,13 @@
-from sys import argv
+fn main() raises:
+    var filename = "dummy.txt"
+    var text: String
 
+    text = "test dummy text"
 
-fn main():
-    var args = argv()
+    with open(filename, "w") as file:
+        file.write(text)
 
-    for arg in args:
-        print(arg)
+    with open(filename, "r") as file:
+        text = file.read()
+
+    print(text)

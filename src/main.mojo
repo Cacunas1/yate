@@ -21,18 +21,16 @@ struct TextEditor:
         # var file = File(self.filename, "r")
         # self.content = file.read()
         # file.close()
-        try:
-            with open(self.filename, "r") as file:
-                self.content = file.read()
-        except:
-            raise Error("File", self.filename, "can't be found")
+        with open(self.filename, "r") as file:
+            self.content = file.read()
 
-    fn save_file(self):
+
+    fn save_file(inout self) raises:
         with open(self.filename, "w") as file:
             # var file = File(self.filename, "w")
             file.write(self.content)
 
-    fn process_normal_mode(self, inout command: String):
+    fn process_normal_mode(inout self, inout command: String) raises -> Bool:
         if command == "i":
             self.mode = "insert"
             print("Switched to insert mode")
@@ -44,14 +42,14 @@ struct TextEditor:
             return False
         return True
 
-    fn process_insert_mode(self, inout input: String):
+    fn process_insert_mode(inout self, inout input: String):
         if input == "ESC":
             self.mode = "normal"
             print("Switched to normal mode")
         else:
             self.content += input
 
-    fn run(self):
+    fn run(inout self) raises:
         var running = True
         while running:
             print("Current mode:", self.mode)
@@ -63,7 +61,7 @@ struct TextEditor:
                 self.process_insert_mode(input_text)
 
 
-fn main():
+fn main() raises:
     var args = argv()
     if len(args) < 2:
         print("Usage: mojo text_editor.mojo <filename>")
