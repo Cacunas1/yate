@@ -2,6 +2,7 @@ import curses
 import sys
 from typing import Optional
 
+
 class SimpleEditor:
     def __init__(self, stdscr: curses.window, filename: Optional[str] = None):
         """
@@ -21,7 +22,7 @@ class SimpleEditor:
 
     def load_file(self, filename: str) -> None:
         """Load a file into the buffer line by line."""
-        with open(filename, 'r', encoding='utf-8') as f:
+        with open(filename, "r", encoding="utf-8") as f:
             self.buffer = f.read().splitlines()
         if not self.buffer:
             self.buffer.append("")  # Ensure there's at least one empty line
@@ -29,7 +30,7 @@ class SimpleEditor:
     def save_file(self) -> None:
         """Save the buffer to the file."""
         if self.filename:
-            with open(self.filename, 'w', encoding='utf-8') as f:
+            with open(self.filename, "w", encoding="utf-8") as f:
                 f.write("\n".join(self.buffer))
 
     def insert_char(self, ch: str) -> None:
@@ -40,23 +41,25 @@ class SimpleEditor:
             self.buffer.append("" * (self.cursor_y + 1))
             line = self.buffer[self.cursor_y]
 
-        self.buffer[self.cursor_y] = line[:self.cursor_x] + ch + line[self.cursor_x:]
+        self.buffer[self.cursor_y] = line[: self.cursor_x] + ch + line[self.cursor_x :]
         self.cursor_x += 1
 
     def delete_char(self) -> None:
         """Delete a character before the cursor."""
         if self.cursor_x > 0:
             line = self.buffer[self.cursor_y]
-            self.buffer[self.cursor_y] = line[:self.cursor_x - 1] + line[self.cursor_x:]
+            self.buffer[self.cursor_y] = (
+                line[: self.cursor_x - 1] + line[self.cursor_x :]
+            )
             self.cursor_x -= 1
 
     def run(self) -> None:
         """Main editor loop."""
-        curses.curs_set(1)          # Make the cursor visible
-        self.stdscr.timeout(100)    # Set a timeout for non-blocking input
+        curses.curs_set(1)  # Make the cursor visible
+        self.stdscr.timeout(100)  # Set a timeout for non-blocking input
 
         while True:
-            self.stdscr.clear()     # Clear the screen before drawing
+            self.stdscr.clear()  # Clear the screen before drawing
             h, w = self.stdscr.getmaxyx()  # Get terminal height and width
 
             # Draw buffer contents to screen
@@ -92,6 +95,7 @@ class SimpleEditor:
             elif 32 <= ch < 127:  # Printable ASCII characters
                 self.insert_char(chr(ch))
 
+
 def main(stdscr: curses.window) -> None:
     """
     This is the entry point for curses. stdscr is the standard screen buffer.
@@ -100,7 +104,7 @@ def main(stdscr: curses.window) -> None:
     editor = SimpleEditor(stdscr, filename)
     editor.run()
 
+
 if __name__ == "__main__":
     # curses.wrapper handles initialization and cleanup of the terminal
     curses.wrapper(main)
-
