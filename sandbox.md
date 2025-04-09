@@ -29,5 +29,8 @@ with open(filename, "r") as file:
     text = file.read()
 
 print(text)
+```
+
+```mojo
 
 ```
